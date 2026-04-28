@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   🌍 ROOT DESIGN SYSTEM
+========================= */
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #f9fafb;
+  --border: #e5e7eb;
+  --accent: #7c3aed;
+
+  --shadow:
+    rgba(0, 0, 0, 0.08) 0 10px 20px,
+    rgba(0, 0, 0, 0.04) 0 3px 6px;
+
+  --radius: 12px;
+}
+
+/* =========================
+   🌙 DARK MODE
+========================= */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #111827;
+    --border: #1f2937;
+    --accent: #a78bfa;
+  }
+}
+
+/* =========================
+   🌐 GLOBAL RESET
+========================= */
+* {
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* =========================
+   📦 ROOT CONTAINER
+========================= */
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* =========================
+   🧾 TYPOGRAPHY
+========================= */
+h1,
+h2,
+h3 {
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+/* =========================
+   🧩 REUSABLE COMPONENTS
+========================= */
+
+/* Card */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+/* Button */
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Input */
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--accent);
+}
+
+/* =========================
+   📱 RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  #root {
+    padding: 0 10px;
+  }
+}
