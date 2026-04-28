@@ -1,12 +1,18 @@
 import Trip from "../models/trip.js";
+
 /**
- * CREATE TRIP
+ * CREATE TRIP (with map support)
  */
 export const createTrip = async (req, res) => {
   try {
+    const { destination, budget, lat, lng } = req.body;
+
     const trip = await Trip.create({
-      ...req.body,
       user: req.user._id,
+      destination,
+      budget,
+      lat,
+      lng,
     });
 
     res.status(201).json(trip);
@@ -41,12 +47,38 @@ export const getTripById = async (req, res) => {
       return res.status(404).json({ message: "Trip not found" });
     }
 
-    // security check
     if (trip.user.toString() !== req.user._id.toString()) {
-      return res.status(401).json({ message: "Not authorized" });
+      return res.status(403).json({ message: "Not authorized" });
     }
 
     res.json(trip);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+/**
+ * UPDATE TRIP (NEW ✨)
+ */
+export const updateTrip = async (req, res) => {
+  try {
+    const trip = await Trip.findById(req.params.id);
+
+    if (!trip) {
+      return res.status(404).json({ message: "Trip not found" });
+    }
+
+    if (trip.user.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: "Not authorized" });
+    }
+
+    const updatedTrip = await Trip.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+
+    res.json(updatedTrip);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -64,7 +96,7 @@ export const deleteTrip = async (req, res) => {
     }
 
     if (trip.user.toString() !== req.user._id.toString()) {
-      return res.status(401).json({ message: "Not authorized" });
+      return res.status(403).json({ message: "Not authorized" });
     }
 
     await trip.deleteOne();

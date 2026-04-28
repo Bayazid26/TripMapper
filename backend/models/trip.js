@@ -11,17 +11,36 @@ const tripSchema = new mongoose.Schema(
     destination: {
       type: String,
       required: true,
+      trim: true,
     },
 
     startDate: Date,
     endDate: Date,
 
-    budget: Number,
-    travelers: Number,
+    budget: {
+      type: Number,
+      default: 0,
+    },
+
+    travelers: {
+      type: Number,
+      default: 1,
+    },
 
     mood: {
       type: String,
       default: "adventure",
+    },
+
+    // 🗺️ MAP SUPPORT (IMPORTANT)
+    lat: {
+      type: Number,
+      required: false,
+    },
+
+    lng: {
+      type: Number,
+      required: false,
     },
 
     itinerary: [
