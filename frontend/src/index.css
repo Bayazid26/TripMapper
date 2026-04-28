@@ -12,9 +12,8 @@
   --border: #e5e7eb;
   --accent: #7c3aed;
 
-  --shadow:
-    rgba(0, 0, 0, 0.08) 0 10px 20px,
-    rgba(0, 0, 0, 0.04) 0 3px 6px;
+  --shadow: rgba(0, 0, 0, 0.08) 0 10px 20px,
+            rgba(0, 0, 0, 0.04) 0 3px 6px;
 
   --radius: 12px;
 }
@@ -59,9 +58,7 @@ body {
 /* =========================
    🧾 TYPOGRAPHY
 ========================= */
-h1,
-h2,
-h3 {
+h1, h2, h3 {
   color: var(--text-h);
   font-weight: 600;
 }
@@ -75,10 +72,8 @@ h2 {
 }
 
 /* =========================
-   🧩 REUSABLE COMPONENTS
+   🧩 COMPONENTS
 ========================= */
-
-/* Card */
 .card {
   background: white;
   border-radius: var(--radius);
@@ -86,7 +81,6 @@ h2 {
   padding: 16px;
 }
 
-/* Button */
 .btn {
   padding: 10px 16px;
   border-radius: 8px;
@@ -103,7 +97,6 @@ h2 {
   opacity: 0.9;
 }
 
-/* Input */
 .input {
   width: 100%;
   padding: 10px;
