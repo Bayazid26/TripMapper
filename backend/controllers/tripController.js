@@ -1,5 +1,4 @@
-import Trip from "../models/Trip.js";
-
+import Trip from "../models/trip.js";
 /**
  * CREATE TRIP
  */
